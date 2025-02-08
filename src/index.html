@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Central de Atendimento ao Cliente Luby</title>
+  </head>
+  <body>
+    <header class="header_logo">
+        <a href="https://luby.com.br">
+            <svg xmlns="http://www.w3.org/2000/svg" width="101" height="48.549" viewBox="0 0 101 48.549">
+                <g id="Grupo_20053" data-name="Grupo 20053" transform="translate(-727.336 -428.163)">
+                    <path id="Caminho_11691" data-name="Caminho 11691" d="M1002.521,452.874a3.356,3.356,0,1,0-3.356-3.356,3.356,3.356,0,0,0,3.356,3.356" transform="translate(-216.735 -18)" fill="#41a0dc"></path>
+                    <g id="Grupo_19517" data-name="Grupo 19517" transform="translate(727.336 436.471)">
+                        <path id="Caminho_11689" data-name="Caminho 11689" d="M854.933,527.556v12.633c0,4.437-2.078,6.676-6.235,6.676s-6.234-2.238-6.234-6.676V527.556h-5.476v13.833a9.606,9.606,0,0,0,3.158,7.594c2.119,1.879,4.956,2.8,8.553,2.8s6.476-.919,8.554-2.8a9.737,9.737,0,0,0,3.157-7.594V527.556Z" transform="translate(-817.094 -518.197)" fill="#fff"></path>
+                        <path id="Caminho_11690" data-name="Caminho 11690" d="M992.655,505.313a12.814,12.814,0,0,1-1.675,6.591,11.721,11.721,0,0,1-4.679,4.477,13.7,13.7,0,0,1-6.915,1.641,13.467,13.467,0,0,1-6.713-1.641,11.263,11.263,0,0,1-4.356-4.795,16.456,16.456,0,0,1-1.56-7.435V484.439l5.436,0s-.04,20.434-.04,20.832a7.931,7.931,0,0,0,2.08,5.673,7.165,7.165,0,0,0,5.355,2.161,6.961,6.961,0,0,0,5.315-2.161,7.761,7.761,0,0,0,2.08-5.673,7.849,7.849,0,0,0-2.08-5.679,5.544,5.544,0,0,0-4.733-1.864,5.109,5.109,0,0,0-3.735,1.46c-1.854-3.789-1.14-2.233-2.341-4.692a8.922,8.922,0,0,1,1.537-.9,10.571,10.571,0,0,1,4.714-1,11.735,11.735,0,0,1,6.239,1.675,11.959,11.959,0,0,1,4.437,4.477,13.179,13.179,0,0,1,1.635,6.557" transform="translate(-918.697 -484.439)" fill="#fff"></path>
+                        <path id="Caminho_11692" data-name="Caminho 11692" d="M1112.722,527.556h-6.039l0,.013-7.532,13.342-7.537-13.355-6.039,0,10.574,18.725c-1.654,3.086-3.88,7.187-6.348,7.187h-1.486v4.967h1.28c6.17,0,8.5-4.612,11.964-11.1l.009-.017Z" transform="translate(-1011.722 -518.197)" fill="#fff"></path>
+                        <path id="Caminho_11693" data-name="Caminho 11693" d="M761.968,513.106h-9.494a1.662,1.662,0,0,1-1.662-1.662V484.439h-5.476v27.6a5.98,5.98,0,0,0,5.98,5.981h10.652Z" transform="translate(-745.336 -484.439)" fill="#fff"></path>
+                    </g>
+                </g>
+            </svg>
+        </a>
+        <h1 id="title"> - Central de Atendimento</h1>
+    </header>
+    <span class="success">
+      <strong>Mensagem enviada com sucesso.</strong>
+    </span>
+    <span class="error">
+      <strong>Valide os campos obrigatórios!</strong>
+    </span>
+    <div id="white-background">
+      <span id="cat">🐈</span>
+      <form>
+        <fieldset class="group">
+          <div class="field">
+            <label for="firstName"><strong>Nome</strong><span class="required-mark"> (obrigatório)</span></label>
+            <input type="text" name="firstName" id="firstName" required />
+          </div>
+          <div class="field">
+            <label for="lastName"><strong>Sobrenome</strong><span class="required-mark"> (obrigatório)</span></label>
+            <input type="text" name="lastName" id="lastName" required />
+          </div>
+        </fieldset>
+        <fieldset class="group">
+          <div class="field">
+            <label for="email"><strong>E-mail</strong><span class="required-mark"> (obrigatório)</span></label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="field">
+            <label for="phone"><strong>Telefone</strong><span class="phone-label-span required-mark"> (obrigatório)</span></label>
+            <input type="number" name="phone" id="phone" />
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="product"><strong>Produto</strong></label>
+          <select id="product">
+            <option selected disabled value="">Selecione</option>
+            <option value="blog">Staff Augmentation</option>
+            <option value="cursos">Digital Products</option>
+            <option value="mentoria">Inception</option>
+            <option value="youtube">R&D</option>
+          </select>
+        </div>
+        <div id="support-type" class="field">
+          <label><strong>Tipo de atendimento</strong></label>
+          <label>
+            <input type="radio" name="atendimento-Ludy" value="ajuda" checked />Ajuda
+          </label>
+          <label>
+            <input type="radio" name="atendimento-Ludy" value="elogio" />Elogio
+          </label>
+          <label>
+            <input type="radio" name="atendimento-tat" value="feedback" />Feedback
+          </label>
+        </div>
+        <fieldset class="group">
+          <div id="check">
+            <label><strong>Qual seu meio de contato preferencial?</strong></label>
+            <br />
+            <input type="checkbox" id="email-checkbox" name="email" value="email" />
+            <label for="email-checkbox">E-mail</label>
+            <input type="checkbox" id="phone-checkbox" name="phone" value="phone" />
+            <label for="phone-checkbox">Telefone</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <br />
+          <label for="open-text-area"><strong>Como podemos te ajudar? <br />Algum elogio ou feedback para nós?</strong><span class="required-mark"> (obrigatório)</span></label>
+          <textarea row="6" id="open-text-area" name="open-text-area" required></textarea>
+        </div>
+        <div class="field">
+          <label for="file-upload"><strong>Adicone um anexo</strong></label>
+          <input id="file-upload" type="file">
+        </div>
+        <button type="submit" class="button">Enviar</button>
+        <div id="privacy">
+          <a href="privacy.html" target="_blank">Política de Privacidade</a>
+        </div>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
