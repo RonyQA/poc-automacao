@@ -1,5 +1,20 @@
 {
+  "name": "poc-automacao",
+  "version": "1.0.0",
+  "description": "Projeto de automação de testes com Cypress",
+  "main": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open",
+    "tests": "cypress run",
+    "start": "http-server ./src -p 1234"
+  },
+  "author": "Rony Henrique",
+  "license": "MIT",
+  "homepage": "https://github.com/RonyQA/poc-automacao",
   "devDependencies": {
-    "cypress": "^13.12.0"
+    "@faker-js/faker": "^9.4.0",
+    "cypress": "^13.12.0",
+    "http-server": "^14.1.1"
   }
 }
