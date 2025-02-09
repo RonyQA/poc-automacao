@@ -13,13 +13,35 @@ class FormPage {
   }
 
   preencherFormulario() {
-    cy.get('#firstName').type(faker.person.firstName());
-    cy.get('#lastName').type(faker.person.lastName());
-    cy.get('#email').type(faker.internet.email());
-    cy.get('#open-text-area').type(faker.lorem.paragraph(), { delay: 0 });
-    cy.get('button[type="submit"]').click();
-  }
+    const firstName = faker.person.firstName();
+    const lastName = faker.person.lastName();
+    const email = faker.internet.email();
+    const paragraph = faker.lorem.paragraph();
 
+    cy.get('#firstName')
+      .type(firstName)
+      .should('have.value', firstName);
+    cy.get('#lastName')
+      .type(lastName)
+      .should('have.value', lastName);
+    cy.get('#email')
+      .type(email)
+      .should('have.value', email);
+    cy.get('#phone-checkbox').check();
+    cy.gerarNumeroTelefone().then((telefone) => {
+      cy.get('#phone').type(telefone)
+        .should('have.value', telefone);
+    });
+    cy.selecionarOpcaoDrodown().then((opcao) => {
+    cy.get('#product')
+      .select(opcao)
+      .should('have.value', opcao);
+    });
+    cy.get('#open-text-area')
+      .type(paragraph, { delay: 0 })
+      .should('have.value', paragraph);
+    cy.contains('button', 'Enviar').click();
+  }
   validarTitulo() {
     cy.title().should('eq', 'Central de Atendimento ao Cliente Luby');
   }
@@ -35,12 +57,16 @@ class FormPage {
       .should('be.visible')
       .should('contain.text', 'Valide os campos obrigatórios!');
   }
+  validarRedirecionamentSiteLuby() {
+    cy.get('.header_logo > a') // Selecione o elemento que envolve a logo
+      .should('have.attr', 'href') // Verifique se possui o atributo href
+        }
 
   validarCampoTelefoneNaoNumerico() {
     cy.get('#phone')
       .should('be.visible')
-      .type('AhYDKSFFSODIUE')
-      .should('have.text','');
+      .type('/*%$??][AhYDKSFFSODIUE')
+      .should('have.text', '');
   }
 
   validarTextosDaPagina() {
