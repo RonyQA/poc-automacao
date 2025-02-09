@@ -12,16 +12,40 @@ describe('Central de Atendimento ao Cliente Luby', () => {
   });
 
   it('Validar preenchimento de campos obrigatórios', () => {
-    cy.preencherFormulario(); 
-    // Aqui você pode adicionar validações adicionais, se necessário
+    FormPage.preencherFormulario(); 
+    
   });
 
   it('Validar mensagem de sucesso do envio da solicitação', () => {
-    cy.preencherFormulario(); // Preenche o formulário
-    FormPage.validarMensagemSucesso(); 
+    FormPage.preencherFormulario(); 
+    FormPage.validarMensagemEnviadaSucesso(); 
+  });
+
+  it('Validar mensagem de erro dos campos obrigatórios', () => {
+    FormPage.preencherFormularioSemDadosObrigatorios(); 
+    FormPage.validarMensagemErro(); 
+  });
+
+  it('Validar campo telefone check marcado e campo telefone preenchido', () => {
+    cy.validarCampoTelefoneCheckMarcado(true, true); 
+    FormPage.validarMensagemEnviadaSucesso(); 
+  });
+
+  it('Validar campo telefone check marcado e campo telefone não preenchido', () => {
+    cy.validarCampoTelefoneCheckMarcado(true, false); 
+    FormPage.validarMensagemErro(); 
+  });
+
+  it('Validar campo telefone check desmarcado', () => {
+    cy.validarCampoTelefoneCheckMarcado(false); 
+    FormPage.validarMensagemEnviadaSucesso(); 
+  });
+
+  it('validar tratamento campo telefone para valores não-numericos', () => {
+    FormPage.validarCampoTelefoneNaoNumerico(); 
   });
 
   it('validar os textos da página', () => {
-    FormPage.validarTextosDaPagina(); // Valida os textos da página
+    FormPage.validarTextosDaPagina(); 
   });
 });
