@@ -164,6 +164,8 @@ Feature: Central de Atendimento ao Cliente Luby
     When eu clico no link de Política de Privacidade
     Then o link deve abrir em uma nova aba
 
+## Feature: Política de Privacidade Luby
+
 ```gherkin
 ## Feature: Política de Privacidade
 
