@@ -49,7 +49,7 @@ Ao clicar no link Política e Privacidade na parte inferior da página, ela abre
 
 > Ambas as mensagens são exibidas por apenas três segundos. Depois disso, elas desaparecem.
 
-## Estrutura do Projeto
+# Estrutura do Projeto
 - **cypress/**
   - **e2e/**
     - **CentralAtendimento.cy.js**: Contém os testes end-to-end para a página principal da Central de Atendimento ao Cliente Luby.
@@ -78,4 +78,102 @@ Ao clicar no link Política e Privacidade na parte inferior da página, ela abre
   - Define a classe `CentralPage` com métodos para interagir com a página principal da Central de Atendimento ao Cliente Luby. Inclui métodos como `visit` para visitar a página e `preencherFormulario` para preencher o formulário.
 
 - **cypress/support/PoliticaPage.js**
-  - Define a classe `PoliticaPage` com métodos para interagir com a página de Política de Privacidade. Inclui métodos como `visit` para visitar a página e `validarTitulo` para validar o título da página.
+  - Define a classe `PoliticaPage` com métodos para interagir com a página de Política de Privacidade. Inclui métodos como `visit` para visitar a página e `validarTitulo` para validar o título da página.  
+
+# Casos de Teste
+
+## Feature: Central de Atendimento ao Cliente Luby
+
+```gherkin
+Feature: Central de Atendimento ao Cliente Luby
+
+  Scenario: Validar redirecionamento para o site Luby
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu clico no link de redirecionamento para o site Luby
+    Then eu devo ser redirecionado para o site Luby
+
+  Scenario: Validar o título da aplicação
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    Then o título da aplicação deve ser "Central de Atendimento ao Cliente Luby"
+
+  Scenario: Validar preenchimento de campos obrigatórios
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu preencho todos os campos obrigatórios do formulário
+    Then o formulário deve ser enviado com sucesso
+
+  Scenario: Validar mensagem de sucesso do envio da solicitação
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu preencho todos os campos obrigatórios do formulário
+    And eu envio o formulário
+    Then eu devo ver uma mensagem de sucesso
+
+  Scenario: Validar mensagem de erro dos campos obrigatórios
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu tento enviar o formulário sem preencher os campos obrigatórios
+    Then eu devo ver uma mensagem de erro
+
+  Scenario: Validar campo telefone check marcado e campo telefone preenchido
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu marco o checkbox de telefone
+    And eu preencho o campo de telefone
+    Then o formulário deve ser enviado com sucesso
+
+  Scenario: Validar campo telefone check marcado e campo telefone não preenchido
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu marco o checkbox de telefone
+    And eu não preencho o campo de telefone
+    Then eu devo ver uma mensagem de erro
+
+  Scenario: Validar campo telefone check não marcado e campo telefone não preenchido
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu não marco o checkbox de telefone
+    And eu não preencho o campo de telefone
+    Then o formulário deve ser enviado com sucesso
+
+  Scenario: Validar tratamento do campo telefone para valores não numéricos
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu preencho o campo de telefone com valores não numéricos
+    Then o campo de telefone deve estar vazio
+
+  Scenario: Validar os textos da página
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    Then eu devo ver todos os textos esperados na página
+
+  Scenario: Validar seleção de contato preferencial
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu marco os checkboxes de contato preferencial
+    Then os checkboxes devem estar marcados corretamente
+
+  Scenario: Validar seleção de tipo de atendimento
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu seleciono um tipo de atendimento
+    Then apenas um tipo de atendimento deve estar selecionado
+
+  Scenario: Validar seleção e anexo de arquivo no formulário
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu anexo um arquivo ao formulário
+    Then o arquivo deve ser anexado corretamente
+
+  Scenario: Validar envio de um arquivo simulando um drag-and-drop
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu anexo um arquivo ao formulário utilizando drag-and-drop
+    Then o arquivo deve ser anexado corretamente
+
+  Scenario: Validar propriedade de redirecionamento para nova aba
+    Given que estou na página principal da Central de Atendimento ao Cliente Luby
+    When eu clico no link de Política de Privacidade
+    Then o link deve abrir em uma nova aba
+
+```gherkin
+## Feature: Política de Privacidade
+
+  Scenario: Validar o título da aplicação
+    Given que estou na página de Política de Privacidade
+    Then o título da aplicação deve ser "Central de Atendimento ao Cliente Luby - Política de Privacidade"
+
+  Scenario: Validar texto da política de privacidade
+    Given que estou na página de Política de Privacidade
+    Then eu devo ver o texto "Não salvamos dados submetidos no formulário da aplicação Central de Atendimento Luby."
+    And eu devo ver o texto "Utilzamos as tecnologias HTML, CSS e JavaScript, para simular uma aplicação real."
+    And eu devo ver o texto "No entanto, a aplicação é um exemplo, sem qualquer persistência de dados, e usada para fins de ensino."
+    And eu devo ver o texto "Para mais informações, acesse o site da Luby."
