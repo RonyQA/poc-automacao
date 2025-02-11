@@ -50,5 +50,32 @@ Ao clicar no link [Política de Privacidade](https://cac-tat-v3.s3.eu-central-1.
 > Ambas as mensagens são exibidas por apenas três segundos. Depois disso, elas desaparecem.
 
 ## Estrutura do Projeto
-Este projeto está estruturado da seguinte forma:
+Diretórios e Arquivos Principais
+cypress/
+e2e/
+CentralAtendimento.cy.js: Contém os testes end-to-end para a página principal da Central de Atendimento ao Cliente Luby.
+PoliticaPrivacidade.cy.js: Contém os testes end-to-end para a página de Política de Privacidade.
+fixtures/: Contém arquivos de dados de teste que podem ser usados nos testes.
+support/
+commands.js: Contém comandos personalizados do Cypress que podem ser reutilizados em diferentes testes.
+CentralPage.js: Contém a classe CentralPage com métodos para interagir com a página principal da Central de Atendimento ao Cliente Luby.
+PoliticaPage.js: Contém a classe PoliticaPage com métodos para interagir com a página de Política de Privacidade.
+Descrição dos Arquivos
+cypress/e2e/CentralAtendimento.cy.js
 
+Contém testes para validar a funcionalidade da página principal da Central de Atendimento ao Cliente Luby, incluindo a validação do título, preenchimento de formulários, seleção de opções, e verificação de mensagens de sucesso e erro.
+cypress/e2e/PoliticaPrivacidade.cy.js
+
+Contém testes para validar a página de Política de Privacidade, incluindo a verificação do título da página e do conteúdo da política de privacidade.
+cypress/fixtures/
+
+Contém arquivos de dados de teste que podem ser utilizados nos testes. Por exemplo, example.json pode ser usado para simular o upload de arquivos.
+cypress/support/commands.js
+
+Define comandos personalizados do Cypress que podem ser reutilizados em diferentes testes. Por exemplo, comandos para gerar números de telefone aleatórios ou selecionar opções de dropdown.
+cypress/support/CentralPage.js
+
+Define a classe CentralPage com métodos para interagir com a página principal da Central de Atendimento ao Cliente Luby. Inclui métodos como visit para visitar a página e preencherFormulario para preencher o formulário.
+cypress/support/PoliticaPage.js
+
+Define a classe PoliticaPage com métodos para interagir com a página de Política de Privacidade. Inclui métodos como visit para visitar a página e validarTitulo para validar o título da página.
