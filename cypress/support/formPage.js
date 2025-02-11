@@ -32,14 +32,16 @@ class FormPage {
       cy.get('#phone').type(telefone)
         .should('have.value', telefone);
     });
-    cy.selecionarOpcaoDrodown().then((opcao) => {
-    cy.get('#product')
-      .select(opcao)
-      .should('have.value', opcao);
+    cy.selecionarOpcaoDrodown().then((opcao) => { //comando customizado commands.js
+      cy.get('#product')
+        .select(opcao)
+        .should('have.value', opcao);
     });
     cy.get('#open-text-area')
       .type(paragraph, { delay: 0 })
       .should('have.value', paragraph);
+    cy.get('#file-upload')
+      .selectFile('cypress/fixtures/example.json');
     cy.contains('button', 'Enviar').click();
   }
   validarTitulo() {
@@ -58,9 +60,37 @@ class FormPage {
       .should('contain.text', 'Valide os campos obrigatórios!');
   }
   validarRedirecionamentSiteLuby() {
-    cy.get('.header_logo > a') // Selecione o elemento que envolve a logo
+    cy.get('.header_logo > a')
       .should('have.attr', 'href') // Verifique se possui o atributo href
-        }
+  }
+
+  validarCheckBox() {
+    cy.get('#email-checkbox').check()
+      .should('be.checked');
+    cy.get('#phone-checkbox').check()
+      .should('be.checked');
+
+    cy.get('input[type="checkbox"]').last().uncheck()
+      .should('not.be.checked');
+
+    cy.get('input[type="checkbox"]').check()
+      .should('be.checked');
+  }
+
+  validarEnvioArquivoFormulario() {
+    cy.get('#file-upload')
+      .selectFile('cypress/fixtures/example.json');
+  }
+
+  validarEnvioDragDrpArquivoFormulario() {
+    const fileName = ['comprovante.txt','example.json']; //posso usar o indice para alternar entre os arquivos
+    //cy.get('#file-upload').selectFile('cypress/fixtures/' + fileName, { action: 'drag-drop' }) Quando não e carregado é necessário ser feito assim
+    cy.fixture(fileName[1]).as('arquivo'); //Carrega a pasta de fixtures com o arquivo example.json
+    cy.get('#file-upload').selectFile('@arquivo', { action: 'drag-drop' })
+      .then(input => {
+        expect(input[0].files[0].name).to.equal(fileName[1]);
+      });
+  }
 
   validarCampoTelefoneNaoNumerico() {
     cy.get('#phone')
