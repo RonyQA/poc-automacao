@@ -1,10 +1,9 @@
 const { faker } = require('@faker-js/faker');
 
-class FormPage {
+class CentralPage {
   visit() {
     cy.visit('/');
   }
-
   preencherFormularioSemDadosObrigatorios() {
     cy.get('#firstName').type(faker.person.firstName());
     cy.get('#lastName').type(faker.person.lastName());
@@ -59,10 +58,33 @@ class FormPage {
       .should('be.visible')
       .should('contain.text', 'Valide os campos obrigatórios!');
   }
-  validarRedirecionamentSiteLuby() {
+  validarRedirecionamentoSiteLuby() {
     cy.get('.header_logo > a')
       .should('have.attr', 'href') // Verifique se possui o atributo href
   }
+  validarLinkPrivacidadeNovaAba() {
+    cy.get('#privacy > a')
+      .should('have.attr', 'href', 'privacy.html') // Verifica se o href está correto
+      .invoke('attr', 'target') // Invoca o atributo target
+      .should('equal', '_blank'); // Verifica se o target é _blank
+  }
+  validarPaginaPrivacidadeAbaAtual() {
+    cy.get('#privacy > a')
+      .should('have.attr', 'href', 'privacy.html') // Verifica se o href está correto
+      .invoke('removeAttr', 'target')
+      .click() // remove o atributo target
+
+    cy.contains('h1', '- Política de Privacidade');
+    cy.contains('p', 'Não salvamos dados submetidos no formulário da aplicação Central de Atendimento Luby.')
+      .should('be.visible');
+    cy.contains('p', 'Utilzamos as tecnologias HTML, CSS e JavaScript, para simular uma aplicação real.')
+      .should('be.visible');
+    cy.contains('p', 'No entanto, a aplicação é um exemplo, sem qualquer persistência de dados, e usada para fins de ensino.')
+      .should('be.visible');
+    cy.contains('Para mais informações, acesse o site da Luby.')
+      .should('be.visible');
+  }
+
 
   validarCheckBox() {
     cy.get('#email-checkbox').check()
@@ -83,7 +105,7 @@ class FormPage {
   }
 
   validarEnvioDragDrpArquivoFormulario() {
-    const fileName = ['comprovante.txt','example.json']; //posso usar o indice para alternar entre os arquivos
+    const fileName = ['comprovante.txt', 'example.json']; //posso usar o indice para alternar entre os arquivos
     //cy.get('#file-upload').selectFile('cypress/fixtures/' + fileName, { action: 'drag-drop' }) Quando não e carregado é necessário ser feito assim
     cy.fixture(fileName[1]).as('arquivo'); //Carrega a pasta de fixtures com o arquivo example.json
     cy.get('#file-upload').selectFile('@arquivo', { action: 'drag-drop' })
@@ -121,4 +143,4 @@ class FormPage {
   }
 }
 
-export default new FormPage();
+export default new CentralPage();

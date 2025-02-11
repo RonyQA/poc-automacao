@@ -1,60 +1,60 @@
 
-import FormPage from '../support/formPage';
+import CentralPage from '../support/CentralPage';
 import preencherFormulario from '../support/commands';
 import { faker } from '@faker-js/faker';
 
-describe('Central de Atendimento ao Cliente Luby', () => {
+describe('Validar Pagina Central de Atendimento ao Cliente Luby', () => {
   beforeEach(() => {
-    FormPage.visit('/');
+    CentralPage.visit('/');
   });
 
   it('validar redirecinamento site Luby', () => {
-    FormPage.validarRedirecionamentSiteLuby();
+    CentralPage.validarRedirecionamentoSiteLuby();
   });
 
   it('validar o título da aplicação', () => {
-    FormPage.validarTitulo();
+    CentralPage.validarTitulo();
   });
 
   it('Validar preenchimento de campos obrigatórios', () => {
-    FormPage.preencherFormulario();
+    CentralPage.preencherFormulario();
   });
 
   it('Validar mensagem de sucesso do envio da solicitação', () => {
-    FormPage.preencherFormulario();
-    FormPage.validarMensagemEnviadaSucesso();
+    CentralPage.preencherFormulario();
+    CentralPage.validarMensagemEnviadaSucesso();
   });
 
   it('Validar mensagem de erro dos campos obrigatórios', () => {
-    FormPage.preencherFormularioSemDadosObrigatorios();
-    FormPage.validarMensagemErro();
+    CentralPage.preencherFormularioSemDadosObrigatorios();
+    CentralPage.validarMensagemErro();
   });
 
   it('Validar campo telefone check marcado e campo telefone preenchido', () => {
     cy.validarCampoTelefoneCheck(true, true);
-    FormPage.validarMensagemEnviadaSucesso();
+    CentralPage.validarMensagemEnviadaSucesso();
   });
 
   it('Validar campo telefone check marcado e campo telefone não preenchido', () => {
     cy.validarCampoTelefoneCheck(true, false);
-    FormPage.validarMensagemErro();
+    CentralPage.validarMensagemErro();
   });
 
   it('Validar campo telefone check não marcado e campo telefone não preenchido', () => {
     cy.validarCampoTelefoneCheck(false, false);
-    FormPage.validarMensagemEnviadaSucesso();
+    CentralPage.validarMensagemEnviadaSucesso();
   });
 
   it('validar tratamento campo telefone para valores não-numericos', () => {
-    FormPage.validarCampoTelefoneNaoNumerico();
+    CentralPage.validarCampoTelefoneNaoNumerico();
   });
 
   it('validar os textos da página', () => {
-    FormPage.validarTextosDaPagina();
+    CentralPage.validarTextosDaPagina();
   });
 
   it('validar selecao de contato preferencial', () => {
-    FormPage.validarCheckBox();
+    CentralPage.validarCheckBox();
   });
 
   it('validar selecao de tipo de atendimento', () => {
@@ -62,10 +62,15 @@ describe('Central de Atendimento ao Cliente Luby', () => {
   });
 
   it('validar selecao e anexo de arquivo no formulario', () => {
-    FormPage.validarEnvioArquivoFormulario();
+    CentralPage.validarEnvioArquivoFormulario();
   });
   
   it('validar envio de um arquivo simulando um drag-and-drop', () => {
-    FormPage.validarEnvioDragDrpArquivoFormulario();
+    CentralPage.validarEnvioDragDrpArquivoFormulario();
   });
+
+  it('validar propriedade de redirecionamento para nova aba ', () => {
+    CentralPage.validarLinkPrivacidadeNovaAba();
+  });
+  
 });
