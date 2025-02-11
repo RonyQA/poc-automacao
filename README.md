@@ -7,7 +7,7 @@ O objetivo deste projeto é demonstrar habilidades técnicas em automação de t
 
 Antes de começarmos a configurar o Cypress e escrever scripts de teste automatizados, deixe-me apresentar a aplicação que testaremos ao longo deste curso.
 
-A aplicação se chama Central de Atendimento ao Cliente TAT - [**CAC TAT**](https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html) - e foi desenvolvida usando HTML, CSS e JavaScript.
+A aplicação se chama Central de Atendimento ao Cliente Ludy - e foi desenvolvida usando HTML, CSS e JavaScript.
 
 ## Funcionalidades da aplicação
 
