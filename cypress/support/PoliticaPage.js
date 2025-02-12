@@ -2,7 +2,7 @@ const { faker } = require('@faker-js/faker');
 
 class PoliticaPage {
   visit() {
-    cy.visit('/privacy.html');
+    cy.visit('/src/privacy.html');
   }
 
   validarTitulo() {

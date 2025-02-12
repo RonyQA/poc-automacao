@@ -2,7 +2,7 @@ const { faker } = require('@faker-js/faker');
 
 class CentralPage {
   visit() {
-    cy.visit('/');
+    cy.visit('/src/index.html');
   }
   preencherFormularioSemDadosObrigatorios() {
     cy.get('#firstName').type(faker.person.firstName());
