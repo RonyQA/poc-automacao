@@ -163,3 +163,20 @@ Feature: Central de Atendimento ao Cliente Luby
     Given que estou na página principal da Central de Atendimento ao Cliente Luby
     When eu clico no link de Política de Privacidade
     Then o link deve abrir em uma nova aba
+```
+
+## Feature: Política de Privacidade
+
+```gherkin
+Feature: Política de Privacidade
+
+  Scenario: Validar o título da aplicação
+    Given que estou na página de Política de Privacidade
+    Then o título da aplicação deve ser "Central de Atendimento ao Cliente Luby - Política de Privacidade"
+
+  Scenario: Validar texto da política de privacidade
+    Given que estou na página de Política de Privacidade
+    Then eu devo ver o texto "Não salvamos dados submetidos no formulário da aplicação Central de Atendimento Luby."
+    And eu devo ver o texto "Utilzamos as tecnologias HTML, CSS e JavaScript, para simular uma aplicação real."
+    And eu devo ver o texto "No entanto, a aplicação é um exemplo, sem qualquer persistência de dados, e usada para fins de ensino."
+    And eu devo ver o texto "Para mais informações, acesse o site da Luby."
